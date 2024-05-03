@@ -1,4 +1,4 @@
-# Testes _end-to-end_ com Cypress
+# Teste de regressão E2E com Cypress
 
 TBD.
 
