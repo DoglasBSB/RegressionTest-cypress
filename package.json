@@ -14,9 +14,9 @@
   "author": "Francisco Doglas",
   "license": "MIT",
   "devDependencies": {
-    "@testing-library/cypress": "^10.0.1",
+    "@testing-library/cypress": "^10.0.3",
     "@walmyr-filho/cy-press": "^1.0.2",
-    "cypress": "^12.17.4",
+    "cypress": "^14.0.1",
     "cypress-multi-reporters": "^1.6.4",
     "eslint": "^8.43.0",
     "eslint-plugin-cypress": "^2.13.3"

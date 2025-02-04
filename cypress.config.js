@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  projectId:'22x3fd',
   reporter: 'cypress-multi-reporters',
   reporterOptions: {
     reporterEnabled: 'cypress-mochawesome-reporter, cypress-qase-reporter',
