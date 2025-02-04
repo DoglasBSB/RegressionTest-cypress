@@ -1,0 +1,58 @@
+name: Cypress Tests with Qase
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🔑 Configurar variável de ambiente do Qase
+        env:
+          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+        run: echo "QASE_API_TOKEN está configurado"
+
+      - name: 🚀 Rodar testes Cypress com Qase
+        env:
+          QASE_REPORT: 1
+        run: npx cypress run
+
+      - name: 📤 Upload de vídeos/screenshots (se falhar)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: cypress/videos/
+
+      - name: 📊 Gerar relatório mochawesome
+        if: always()
+        run: |
+          npx mochawesome-merge --reportDir cypress/reports/mochawesome > cypress/reports/mochawesome/mochawesome.json
+          npx marge cypress/reports/mochawesome/mochawesome.json
+
+      - name: 📨 Publicar relatório (opcional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-report
+          path: cypress/reports/mochawesome/
+
+      - name: ✅ Finalizado
+        run: echo "Pipeline concluído!"
