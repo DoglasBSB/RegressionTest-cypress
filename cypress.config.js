@@ -1,4 +1,6 @@
 const { defineConfig } = require('cypress')
+const fs = require('fs');
+const path = require('path');
 
 module.exports = defineConfig({
   projectId: '22x3fd',
@@ -25,6 +27,18 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     baseUrl: 'https://opensource-demo.orangehrmlive.com',
     setupNodeEvents(on, config) {
+
+      const reportPath = path.join(__dirname, 'cypress/reports/html/.jsons');
+      const screenshotPath = path.join(__dirname, 'cypress/screenshots');
+
+      if (!fs.existsSync(reportPath)) {
+        fs.mkdirSync(reportPath, { recursive: true });
+      }
+
+      if (!fs.existsSync(screenshotPath)) {
+        fs.mkdirSync(screenshotPath, { recursive: true });
+      }
+
       require('cypress-mochawesome-reporter/plugin')(on);
       return config;
     }
