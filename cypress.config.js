@@ -1,15 +1,19 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  projectId:'22x3fd',
+  projectId: '22x3fd',
   reporter: 'cypress-multi-reporters',
   reporterOptions: {
-    reporterEnabled: 'cypress-mochawesome-reporter, cypress-qase-reporter',
-    cypressMochawesomeReporterReporterOptions: {
-      charts: true
+    reporterEnabled: ['cypress-mochawesome-reporter', 'cypress-qase-reporter'],
+    mochawesomeReporterOptions: {
+      charts: true,
+      reportDir: 'cypress/reports/mochawesome',
+      overwrite: false,
+      html: true,
+      json: true
     },
-    cypressQaseReporterReporterOptions: {
-      apiToken: '5d4b38202808ea2ad88db6d0b99a4453f243822db931ac649f3408371e211eca',
+    qaseReporterOptions: {
+      apiToken: process.env.QASE_API_TOKEN,  // Use variável de ambiente para segurança
       projectCode: 'OHRM22',
       logging: true,
       video: false
@@ -18,10 +22,12 @@ module.exports = defineConfig({
   viewportWidth: 1280,
   viewportHeight: 900,
   e2e: {
-    defaultCommandTimeout:10000,
+    defaultCommandTimeout: 10000,
     baseUrl: 'https://opensource-demo.orangehrmlive.com',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+      require('cypress-mochawesome-reporter/plugin')(on);
+      return config;
+    }
   }
-})
+});
+
