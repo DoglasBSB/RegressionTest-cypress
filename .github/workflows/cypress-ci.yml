@@ -34,25 +34,25 @@ jobs:
           QASE_REPORT: 1
         run: npx cypress run
 
-      - name: 📤 Upload de vídeos/screenshots (se falhar)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-artifacts
-          path: cypress/videos/
+     # - name: 📤 Upload de vídeos/screenshots (se falhar)
+     #   if: failure()
+     #   uses: actions/upload-artifact@v4
+     #   with:
+     #     name: cypress-artifacts
+     #     path: cypress/videos/
 
-      - name: 📊 Gerar relatório mochawesome
-        if: always()
-        run: |
-          npx mochawesome-merge --reportDir cypress/reports/mochawesome > cypress/reports/mochawesome/mochawesome.json
-          npx marge cypress/reports/mochawesome/mochawesome.json
+      #- name: 📊 Gerar relatório mochawesome
+      #  if: always()
+      #  run: |
+      #    npx mochawesome-merge --reportDir cypress/reports/mochawesome > cypress/reports/mochawesome/mochawesome.json
+      #    npx marge cypress/reports/mochawesome/mochawesome.json
 
-      - name: 📨 Publicar relatório (opcional)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-report
-          path: cypress/reports/mochawesome/
+      #- name: 📨 Publicar relatório (opcional)
+      #  if: always()
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: cypress-report
+      #    path: cypress/reports/mochawesome/
 
       - name: ✅ Finalizado
         run: echo "Pipeline concluído!"
