@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-04T23:35:17.607Z",
+    "end": "2025-02-04T23:35:22.067Z",
+    "duration": 4460,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b7bfe354-5117-4c20-9f02-e50bdcfda446",
+      "title": "",
+      "fullFile": "cypress/e2e/CT04 - Esqueci minha senha.cy.js",
+      "file": "cypress/e2e/CT04 - Esqueci minha senha.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a4c5bb38-160f-49c9-896f-d4aed7349353",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Forgot your password (Qase ID: 2)",
+              "fullTitle": "Login Forgot your password (Qase ID: 2)",
+              "timedOut": null,
+              "duration": 4429,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', '**/index').as('getIndex');\ncy.forgotPassword();\ncy.contains('h6', 'Reset Password link sent successfully').should('be.visible');",
+              "err": {},
+              "uuid": "8d5d9b54-7115-4f18-bdf9-3d2e9fb150b0",
+              "parentUUID": "a4c5bb38-160f-49c9-896f-d4aed7349353",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8d5d9b54-7115-4f18-bdf9-3d2e9fb150b0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4429,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
