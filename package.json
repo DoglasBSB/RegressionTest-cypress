@@ -21,6 +21,7 @@
     "cypress-multi-reporters": "^1.6.4",
     "cypress-qase-reporter": "^2.2.8",
     "eslint": "^8.43.0",
-    "eslint-plugin-cypress": "^2.13.3"
+    "eslint-plugin-cypress": "^2.13.3",
+    "mocha": "^11.1.0"
   }
 }

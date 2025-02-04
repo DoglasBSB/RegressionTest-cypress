@@ -25,7 +25,7 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     baseUrl: 'https://opensource-demo.orangehrmlive.com',
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
+      require('cypress-qase-reporter/plugin')(on, config); // Verifique se o caminho está correto
       return config;
     }
   }
