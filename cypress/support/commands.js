@@ -21,9 +21,7 @@ Cypress.Commands.add('sessionLogin', (
   password = Cypress.env('USER_PASSWORD')
 ) => {
   const login = () => cy.guiLogin(username, password)
-  const sessionId = `${username}_session` // Garantir que o ID da sessão seja uma string simples
-  cy.session(sessionId, login)
- // cy.session(username, login)
+  cy.session(username, login)
 })
 
 // Forgot your password
